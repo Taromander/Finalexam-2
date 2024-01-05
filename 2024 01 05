@@ -10,116 +10,94 @@ class Luggage:
     def __str__(self):
         return f"Luggage ID: {self.luggage_id}\nWeight: {self.weight} kg\nDeparture Airport: {self.departure_airport}\nDestination Airport: {self.destination_airport}\nPassenger Name: {self.passenger_name}\n"
 
+    def query_luggage(self):
+        return f"Luggage ID: {self.luggage_id}\nWeight: {self.weight} kg\nDeparture Airport: {self.departure_airport}\nDestination Airport: {self.destination_airport}\nPassenger Name: {self.passenger_name}\n"
+
+    def modify_weight(self, new_weight):
+        self.weight = new_weight
+        print("Luggage weight modified.")
+
+    def modify_departure_airport(self, new_departure_airport):
+        self.departure_airport = new_departure_airport
+        print("Departure airport modified.")
+
+    def modify_destination_airport(self, new_destination_airport):
+        self.destination_airport = new_destination_airport
+        print("Destination airport modified.")
+
+    def modify_passenger_name(self, new_passenger_name):
+        self.passenger_name = new_passenger_name
+        print("Passenger name modified.")
+
 
 class BoardingPass:
-    def __init__(self, passenger_name, boarding_pass_number, boarding_time, gate_number, seat_position, luggage_count, luggage_ids):
+    def __init__(self, passenger_name, boarding_pass_id, boarding_time, gate_number, seat_location, luggage_count, luggage_id):
         self.passenger_name = passenger_name
-        self.boarding_pass_number = boarding_pass_number
+        self.boarding_pass_id = boarding_pass_id
         self.boarding_time = boarding_time
         self.gate_number = gate_number
-        self.seat_position = seat_position
+        self.seat_location = seat_location
         self.luggage_count = luggage_count
-        self.luggage_ids = luggage_ids
+        self.luggage_id = luggage_id
 
     def __str__(self):
-        return f"Passenger Name: {self.passenger_name}\nBoarding Pass Number: {self.boarding_pass_number}\nBoarding Time: {self.boarding_time}\nGate Number: {self.gate_number}\nSeat Position: {self.seat_position}\nLuggage Count: {self.luggage_count}\nLuggage IDs: {', '.join(map(str, self.luggage_ids))}\n"
+        return f"Passenger Name: {self.passenger_name}\nBoarding Pass ID: {self.boarding_pass_id}\nBoarding Time: {self.boarding_time}\nGate Number: {self.gate_number}\nSeat Location: {self.seat_location}\nLuggage Count: {self.luggage_count}\nLuggage ID: {self.luggage_id}\n"
+
+    def query_boarding_pass(self):
+        return f"Passenger Name: {self.passenger_name}\nBoarding Pass ID: {self.boarding_pass_id}\nBoarding Time: {self.boarding_time}\nGate Number: {self.gate_number}\nSeat Location: {self.seat_location}\nLuggage Count: {self.luggage_count}\nLuggage ID: {self.luggage_id}\n"
+
+    def modify_boarding_time(self, new_boarding_time):
+        self.boarding_time = new_boarding_time
+        print("Boarding time modified.")
+
+    def modify_gate_number(self, new_gate_number):
+        self.gate_number = new_gate_number
+        print("Gate number modified.")
+
+    def modify_seat_location(self, new_seat_location):
+        self.seat_location = new_seat_location
+        print("Seat location modified.")
+
+    def modify_luggage_count(self, new_luggage_count):
+        self.luggage_count = new_luggage_count
+        print("Luggage count modified.")
+
+    def modify_luggage_id(self, new_luggage_id):
+        self.luggage_id = new_luggage_id
+        print("Luggage ID modified.")
 
 
-def query_luggage(luggage_objects, luggage_id):
-    for luggage in luggage_objects:
-        if luggage.luggage_id == luggage_id:
-            return luggage
-    return None
+# 建立 3 個登機證物件並呼叫各屬性
+boarding_pass1 = BoardingPass("Passenger1", "BP123", "12:00", "Gate A1", "2A", 2, "L123")
+boarding_pass2 = BoardingPass("Passenger2", "BP456", "12:30", "Gate B2", "3B", 1, "L456")
+boarding_pass3 = BoardingPass("Passenger3", "BP789", "13:00", "Gate C3", "4C", 3, "L789")
 
+print("=== Boarding Pass 1 ===")
+print(boarding_pass1)
+print("\n=== Boarding Pass 2 ===")
+print(boarding_pass2)
+print("\n=== Boarding Pass 3 ===")
+print(boarding_pass3)
 
-def modify_luggage_weight(luggage, new_weight):
-    luggage.weight = new_weight
+# 建立 3 個行李物件並呼叫各屬性
+luggage1 = Luggage("L123", 15, "Airport A", "Airport X", "Passenger1")
+luggage2 = Luggage("L456", 20, "Airport B", "Airport Y", "Passenger2")
+luggage3 = Luggage("L789", 25, "Airport C", "Airport Z", "Passenger3")
 
+print("\n=== Luggage 1 ===")
+print(luggage1)
+print("\n=== Luggage 2 ===")
+print(luggage2)
+print("\n=== Luggage 3 ===")
+print(luggage3)
 
-def modify_luggage_destination(luggage, new_destination):
-    luggage.destination_airport = new_destination
-
-
-def modify_luggage_passenger_name(luggage, new_passenger_name):
-    luggage.passenger_name = new_passenger_name
-
-
-def modify_luggage_departure_airport(luggage, new_departure_airport):
-    luggage.departure_airport = new_departure_airport
-
-
-def modify_luggage_id(luggage, new_luggage_id):
-    luggage.luggage_id = new_luggage_id
-
-
-def query_boarding_pass(boarding_pass_objects, passenger_name):
-    for boarding_pass in boarding_pass_objects:
-        if boarding_pass.passenger_name == passenger_name:
-            return boarding_pass
-    return None
-
-
-def modify_boarding_pass_number(boarding_pass, new_boarding_pass_number):
-    boarding_pass.boarding_pass_number = new_boarding_pass_number
-
-
-def modify_boarding_time(boarding_pass, new_boarding_time):
-    boarding_pass.boarding_time = new_boarding_time
-
-
-def modify_gate_number(boarding_pass, new_gate_number):
-    boarding_pass.gate_number = new_gate_number
-
-
-def modify_seat_position(boarding_pass, new_seat_position):
-    boarding_pass.seat_position = new_seat_position
-
-
-def modify_luggage_count(boarding_pass, new_luggage_count):
-    boarding_pass.luggage_count = new_luggage_count
-
-
-def modify_luggage_ids(boarding_pass, new_luggage_ids):
-    boarding_pass.luggage_ids = new_luggage_ids
-
-
-if __name__ == "__main__":
-    luggage1 = Luggage("L001", 15, "Airport_A", "Airport_B", "John Doe")
-    luggage2 = Luggage("L002", 20, "Airport_C", "Airport_D", "Jane Smith")
-    luggage3 = Luggage("L003", 12, "Airport_E", "Airport_F", "Bob Johnson")
-
-    boarding_pass1 = BoardingPass("John Doe", "BP001", "12:00 PM", "Gate 1", "2A", 2, ["L001", "L002"])
-    boarding_pass2 = BoardingPass("Jane Smith", "BP002", "1:30 PM", "Gate 2", "3C", 1, ["L003"])
-    boarding_pass3 = BoardingPass("Bob Johnson", "BP003", "3:00 PM", "Gate 3", "1B", 0, [])
-
-    # Output all properties of boarding_pass1
-    print("Boarding Pass 1 Information:")
-    print(boarding_pass1)
-
-    # Modify some properties of boarding_pass1
-    modify_boarding_pass_number(boarding_pass1, "BP101")
-    modify_boarding_time(boarding_pass1, "2:00 PM")
-    modify_gate_number(boarding_pass1, "Gate 10")
-
-    # Output the modified properties of boarding_pass1
-    print("\nBoarding Pass 1 Information After Modification:")
-    print(boarding_pass1)
-
-    # Query luggage by ID
-    luggage_id_to_query = "L002"
-    queried_luggage = query_luggage([luggage1, luggage2, luggage3], luggage_id_to_query)
-
-    if queried_luggage:
-        # Output luggage information
-        print(f"\nLuggage Information for ID {luggage_id_to_query}:\n{queried_luggage}")
-
-        # Modify some properties of the queried luggage
-        modify_luggage_weight(queried_luggage, 18)
-        modify_luggage_destination(queried_luggage, "Airport_X")
-        modify_luggage_passenger_name(queried_luggage, "New Passenger")
-
-        # Output the modified properties of the luggage
-        print("\nLuggage Information After Modification:")
-        print(queried_luggage)
-    else:
-        print(f"\nLuggage with ID {luggage_id_to_query} not found.")
+# 透過行李ID查詢行李資訊
+luggage_id_to_query = input("\nEnter luggage ID to query: ")
+if luggage_id_to_query == luggage1.luggage_id:
+    print(luggage1.query_luggage())
+elif luggage_id_to_query == luggage2.luggage_id:
+    print(luggage2.query_luggage())
+elif luggage_id_to_query == luggage3.luggage_id:
+    print(luggage3.query_luggage())
+else:
+    print("Luggage ID not found.")
