@@ -1,3 +1,4 @@
+# 只是基本款 有行李和登記證 未完成
 class Luggage:
     def __init__(self, luggage_id, weight, departure_airport, destination_airport, passenger_name):
         self.luggage_id = luggage_id
